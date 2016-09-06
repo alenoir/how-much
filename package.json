@@ -1,0 +1,30 @@
+{
+  "name": "HowMuch",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "postinstall": "remotedev-debugger --hostname 192.168.1.21 --port 5678 --injectserver",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "15.3.1",
+    "react-native": "0.32.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.11.4",
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb": "^10.0.0",
+    "eslint-plugin-import": "^1.12.0",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-react": "^6.0.0",
+    "remote-redux-devtools-on-debugger": "^0.6.2",
+    "remote-redux-devtools": "^0.4.1",
+    "redux-devtools": "^3.3.1",
+    "redux-logger": "^2.0.4"
+  }
+}
