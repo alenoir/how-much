@@ -6,7 +6,6 @@ const App = require('./src/containers/App');
 
 const {
   AppRegistry,
-  View,
 } = ReactNative;
 
 const store = configureStore();

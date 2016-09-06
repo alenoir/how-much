@@ -2,7 +2,7 @@ import createLogger from 'redux-logger';
 import ReduxThunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 import devTools from 'remote-redux-devtools';
-import rootReducer  from '../reducers';
+import rootReducer from '../reducers';
 
 module.exports = (initialState) => {
   const loggerMiddleware = createLogger();
