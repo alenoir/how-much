@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactNative from 'react-native';
-const Immutable = require('immutable');
+import Immutable from 'immutable';
 
-const window = global || window;
+const window = global || window; // eslint-disable-line
 
 window.React = React;
 window.ReactNative = ReactNative;
