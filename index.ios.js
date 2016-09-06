@@ -6,17 +6,22 @@ const App = require('./src/containers/App');
 
 const {
   AppRegistry,
-  View,
 } = ReactNative;
+
+const {
+  Component,
+} = React;
 
 const store = configureStore();
 
-function HMIM() {
-  return (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+class HMIM extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
+  }
 }
 
 AppRegistry.registerComponent('HMIM', () => HMIM);
