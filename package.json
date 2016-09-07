@@ -6,7 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "postinstall": "remotedev-debugger --hostname 192.168.1.21 --port 5678 --injectserver",
     "lint": "eslint .",
-    "test": "npm run lint && jest"
+    "test": "npm run lint && jest && codecov"
   },
   "jest": {
     "preset": "jest-react-native",
