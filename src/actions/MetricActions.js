@@ -10,6 +10,7 @@ module.exports = {
       dispatch({ type: FETCH_METRICS_REQUEST });
       const metrics = Metrics;
       dispatch({ type: FETCH_METRICS_SUCCESS, metrics });
+      return Promise.resolve();
     };
   },
 };

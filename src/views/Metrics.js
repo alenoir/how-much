@@ -1,6 +1,8 @@
-const { bindActionCreators } = require('redux');
-const { connect } = require('react-redux');
-const MetricActions = require('../actions/MetricActions');
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import MetricActions from '../actions/MetricActions';
+import ChoiceButton from '../components/ChoiceButton';
+import Loader from '../components/Loader';
 
 const {
   StyleSheet,
@@ -9,7 +11,6 @@ const {
   TextInput,
   ScrollView,
   Text,
-  TouchableWithoutFeedback,
 } = ReactNative;
 
 const {
@@ -28,16 +29,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#2DB0CD',
   },
-  loaderContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  loader: {
-    fontFamily: 'Varela Round',
-    fontSize: 30,
-    color: 'white',
-  },
   inputContainer: {
     flex: 1,
   },
@@ -55,37 +46,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  choiceTypeContainer: {
-    width,
-    flexDirection: 'row',
-  },
-  choiceMetricContainer: {
-    width,
-    flexDirection: 'row',
-  },
-  buttonChoice: {
-    alignSelf: 'center',
-    width: width / 5,
-    height: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonChoiceText: {
-    fontFamily: 'Varela Round',
-    color: 'white',
-    fontSize: 18,
-  },
-  buttonType: {
-  },
-  buttonTypeSelected: {
-    backgroundColor: '#32BF69',
-  },
-  buttonMetric: {
-  },
-  buttonMetricSelected: {
-    backgroundColor: '#32BF69',
-  },
-
   listContainer: {
     flex: 5,
   },
@@ -111,7 +71,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class Metrics extends Component {
+export class Metrics extends Component {
 
   constructor() {
     super();
@@ -120,8 +80,6 @@ class Metrics extends Component {
       metric: 'm2',
       value: '',
     };
-
-    this.handleChangeValue = this.handleChangeValue.bind(this);
   }
 
   componentDidMount() {
@@ -144,48 +102,11 @@ class Metrics extends Component {
       metric: metrics[0],
     });
   }
+
   handleChangeMetric(metric) {
     this.setState({
       metric,
     });
-  }
-
-  renderChoiceType(type) {
-    const btnStyle = [];
-    btnStyle.push(styles.buttonChoice);
-    btnStyle.push(styles.buttonType);
-    if (this.state.type === type) {
-      btnStyle.push(styles.buttonTypeSelected);
-    }
-    return (
-      <TouchableWithoutFeedback
-        key={type}
-        onPress={(() => this.handleChangeType(type))}
-      >
-        <View style={btnStyle}>
-          <Text style={styles.buttonChoiceText}>{type}</Text>
-        </View>
-      </TouchableWithoutFeedback>
-    );
-  }
-
-  renderChoiceMetric(metric) {
-    const btnStyle = [];
-    btnStyle.push(styles.buttonChoice);
-    btnStyle.push(styles.buttonMetric);
-    if (this.state.metric === metric) {
-      btnStyle.push(styles.buttonMetricSelected);
-    }
-    return (
-      <TouchableWithoutFeedback
-        key={metric}
-        onPress={(() => this.handleChangeMetric(metric))}
-      >
-        <View style={btnStyle}>
-          <Text style={styles.buttonChoiceText}>{metric}</Text>
-        </View>
-      </TouchableWithoutFeedback>
-    );
   }
 
   renderItem(item) {
@@ -215,7 +136,7 @@ class Metrics extends Component {
             <TextInput
               autoFocus
               style={styles.input}
-              onChangeText={this.handleChangeValue}
+              onChangeText={((value) => this.handleChangeValue(value))}
               value={this.state.value}
               keyboardType="number-pad"
               placeholder=""
@@ -230,8 +151,15 @@ class Metrics extends Component {
               horizontal
               style={[styles.choiceTypeContainer]}
             >
-              {map.keySeq().map((key) => {
-                return this.renderChoiceType(key);
+              {map.keySeq().map((type) => {
+                return (
+                  <ChoiceButton
+                    key={type}
+                    name={type}
+                    selected={type === this.state.type}
+                    onPress={((value) => this.handleChangeType(value))}
+                  />
+                );
               })}
             </ScrollView>
             <ScrollView
@@ -239,8 +167,15 @@ class Metrics extends Component {
               horizontal
               style={[styles.choiceMetricContainer]}
             >
-              {map.get(this.state.type).keySeq().map((key) => {
-                return this.renderChoiceMetric(key);
+              {map.get(this.state.type).keySeq().map((metric) => {
+                return (
+                  <ChoiceButton
+                    key={metric}
+                    name={metric}
+                    selected={metric === this.state.metric}
+                    onPress={((value) => this.handleChangeMetric(value))}
+                  />
+                );
               })}
             </ScrollView>
           </View>
@@ -256,11 +191,7 @@ class Metrics extends Component {
     }
 
     return (
-      <View style={styles.container}>
-        <View style={styles.loaderContainer}>
-          <Text style={styles.loader}>Loading...</Text>
-        </View>
-      </View>
+      <Loader />
     );
   }
 
@@ -270,7 +201,6 @@ Metrics.propTypes = {
   metric: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
 };
-
 
 const mapStateToProps = (state) => ({
   metric: state.metric,

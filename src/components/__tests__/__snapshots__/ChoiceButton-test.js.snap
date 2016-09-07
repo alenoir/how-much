@@ -1,0 +1,86 @@
+exports[`Choice Button Render selected 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  hitSlop={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function bound touchableHandleResponderGrant]}
+  onResponderMove={[Function bound touchableHandleResponderMove]}
+  onResponderRelease={[Function bound touchableHandleResponderRelease]}
+  onResponderTerminate={[Function bound touchableHandleResponderTerminate]}
+  onResponderTerminationRequest={[Function bound touchableHandleResponderTerminationRequest]}
+  onStartShouldSetResponder={[Function bound touchableHandleStartShouldSetResponder]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "height": 30,
+        "justifyContent": "center",
+        "width": 75
+      },
+      Object {
+        "backgroundColor": "#32BF69"
+      }
+    ]
+  }
+  testID={undefined}>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "white",
+        "fontFamily": "Varela Round",
+        "fontSize": 18
+      }
+    }>
+    TestString
+  </Text>
+</View>
+`;
+
+exports[`Choice Button Render unselected 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  hitSlop={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function bound touchableHandleResponderGrant]}
+  onResponderMove={[Function bound touchableHandleResponderMove]}
+  onResponderRelease={[Function bound touchableHandleResponderRelease]}
+  onResponderTerminate={[Function bound touchableHandleResponderTerminate]}
+  onResponderTerminationRequest={[Function bound touchableHandleResponderTerminationRequest]}
+  onStartShouldSetResponder={[Function bound touchableHandleStartShouldSetResponder]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "height": 30,
+        "justifyContent": "center",
+        "width": 75
+      }
+    ]
+  }
+  testID={undefined}>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "white",
+        "fontFamily": "Varela Round",
+        "fontSize": 18
+      }
+    }>
+    TestString
+  </Text>
+</View>
+`;
